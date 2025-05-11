@@ -13,7 +13,6 @@ class SoulmateServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/soulmate.php', 'soulmate');
-
     }
 
     /**
@@ -21,9 +20,11 @@ class SoulmateServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->publishes([
-            __DIR__ . '/../config/soulmate.php' => config_path('soulmate.php'),
-        ], 'config');
+        if($this->app->runningInConsole()){
+            $this->publishes([
+                __DIR__ . '/../config/soulmate.php' => config_path('soulmate.php'),
+            ], 'config');
+        }
 
         $this->app->bind(Providers\Provider::class, OllamaProvider::class);
         $this->app->bind(SoulmateService::class, SoulmateService::class);

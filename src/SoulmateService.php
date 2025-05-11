@@ -120,7 +120,7 @@ class SoulmateService
 
     public function chat(array $messages): Message
     {
-        // Store Messages in session and pull full chat history.
+        // Store Messages and pass though the full chat history.
         $chatResponse = $this->chatCompletion(
             messages: $this->conversation->messages($messages)->toCollection(),
         );
@@ -181,7 +181,7 @@ class SoulmateService
 
             if (!$tool) {
                 return new ToolMessage($functionId, [
-                    'response' => "Function ($method) does not exist.",
+                    'response' => "Tool Call Function ($method) does not exist.",
                     'status'   => 'error'
                 ]);
             }
@@ -199,7 +199,6 @@ class SoulmateService
 
                     if ($validator->fails()) {
 
-                        // Compact to field => firstError
                         $errors = Collection::make($validator->errors()->toArray())
                             ->map(fn(array $errors) => Arr::first($errors))
                             ->toArray();
