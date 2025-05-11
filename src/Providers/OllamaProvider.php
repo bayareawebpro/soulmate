@@ -11,7 +11,6 @@ class OllamaProvider implements Provider
         'temperature'     => 0.2,
         'max_new_tokens'  => 120,
         'response_format' => 'none',
-        //'frequency_penalty' => -1,
     ];
 
 }

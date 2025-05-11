@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace BayAreaWebPro\Soulmate;
+namespace BayAreaWebPro\Soulmate\Chat;
 
 use BayAreaWebPro\Soulmate\Enums\FinishReason;
 use Illuminate\Support\Collection;

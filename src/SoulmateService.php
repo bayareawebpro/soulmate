@@ -2,6 +2,9 @@
 
 namespace BayAreaWebPro\Soulmate;
 
+use BayAreaWebPro\Soulmate\Chat\Conversation;
+use BayAreaWebPro\Soulmate\Chat\Message;
+use BayAreaWebPro\Soulmate\Chat\Response;
 use BayAreaWebPro\Soulmate\Enums\Endpoint;
 use BayAreaWebPro\Soulmate\Enums\FinishReason;
 use BayAreaWebPro\Soulmate\Enums\Role;

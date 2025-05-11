@@ -2,10 +2,10 @@
 
 namespace BayAreaWebPro\Soulmate\Tests\Feature;
 
-use BayAreaWebPro\Soulmate\Soulmate;
+use BayAreaWebPro\Soulmate\Chat\Message;
 use BayAreaWebPro\Soulmate\Enums\Role;
-use BayAreaWebPro\Soulmate\Message;
 use BayAreaWebPro\Soulmate\Providers\DeepInfraProvider;
+use BayAreaWebPro\Soulmate\Soulmate;
 use BayAreaWebPro\Soulmate\Tests\Mocks\ExampleTool;
 use BayAreaWebPro\Soulmate\Tests\TestCase;
 
