@@ -1,0 +1,8 @@
+.idea
+composer.lock
+.phpunit.result.cache
+build
+docs
+vendor
+coverage
+/.phpunit.cache
