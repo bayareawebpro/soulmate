@@ -16,34 +16,3 @@ composer require bayareawebpro/soulmate
 composer test
 composer lint
 ```
-
----
-
-#### CodeCov
-
-Add token to Github repo: 
-
-```shell script
-CODECOV_TOKEN
-```
-
----
-
-
-#### Update Package Name
-```shell script
-PackageName
-soulmate
-```
-
-#### Update Vendor Name
-```shell script
-BayAreaWebPro
-bayareawebpro
-```
-
-#### Update Author Name
-```shell script
-Dan Alvidrez
-dan@bayareawebpro.com
-```
