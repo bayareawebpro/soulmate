@@ -1,4 +1,6 @@
-# Soulmate - Simple OpenAI-Compatible API Client for Laravel
+# Soulmate
+
+ **Simple OpenAI-Compatible API Client for Laravel**
 
 ![CI](https://github.com/bayareawebpro/soulmate/workflows/ci/badge.svg)
 ![Coverage](https://codecov.io/gh/bayareawebpro/soulmate/branch/master/graph/badge.svg)
