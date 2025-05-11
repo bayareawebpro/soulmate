@@ -1,15 +1,13 @@
-# Laravel Package Boilerplate
+# Soulmate - Simple OpenAI-Compatible API Client for Laravel
 
-```bash
-![CI](https://github.com/bayareawebpro/package-name/workflows/ci/badge.svg)
-![Coverage](https://codecov.io/gh/bayareawebpro/package-name/branch/master/graph/badge.svg)
-![Downloads](https://img.shields.io/packagist/dt/bayareawebpro/package-name.svg)
-![Version](https://img.shields.io/github/v/release/bayareawebpro/package-name.svg)
+![CI](https://github.com/bayareawebpro/soulmate/workflows/ci/badge.svg)
+![Coverage](https://codecov.io/gh/bayareawebpro/soulmate/branch/master/graph/badge.svg)
+![Downloads](https://img.shields.io/packagist/dt/bayareawebpro/soulmate.svg)
+![Version](https://img.shields.io/github/v/release/bayareawebpro/soulmate.svg)
 ![License](https://img.shields.io/badge/License-MIT-success.svg)
-```
 
 ```bash
-composer require bayareawebpro/package-name
+composer require bayareawebpro/soulmate
 ```
 
 ### Testing
@@ -35,7 +33,7 @@ CODECOV_TOKEN
 #### Update Package Name
 ```shell script
 PackageName
-package-name
+soulmate
 ```
 
 #### Update Vendor Name

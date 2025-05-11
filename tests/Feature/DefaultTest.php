@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace BayAreaWebPro\PackageName\Tests\Feature;
+namespace BayAreaWebPro\Soulmate\Tests\Feature;
 
-use BayAreaWebPro\PackageName\Tests\TestCase;
+use BayAreaWebPro\Soulmate\Tests\TestCase;
 use Workbench\App\Models\User;
 
 class DefaultTest extends TestCase

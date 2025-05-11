@@ -2,8 +2,8 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | PackageName
+    | Soulmate OpenAi-Compatible Client
     |--------------------------------------------------------------------------
     */
-    'api_url' => env('API_URL', ''),
+    'secret' => env('SOULMATE_SECRET', 'xxx'),
 ];

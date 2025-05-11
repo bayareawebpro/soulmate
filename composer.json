@@ -1,9 +1,12 @@
 {
-    "name": "bayareawebpro/package-name",
-    "description": "PackageName for Laravel",
+    "name": "bayareawebpro/soulmate",
+    "description": "Soulmate - Simple OpenAI-Compatible API Client for Laravel",
     "keywords": [
         "bayareawebpro",
-        "laravel"
+        "laravel",
+        "http-client",
+        "api-client",
+        "ai"
     ],
     "homepage": "https://github.com/bayareawebpro/package-name",
     "license": "MIT",
@@ -26,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BayAreaWebPro\\PackageName\\": "src"
+            "BayAreaWebPro\\Soulmate\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BayAreaWebPro\\PackageName\\Tests\\": "tests",
+            "BayAreaWebPro\\Soulmate\\Tests\\": "tests",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
@@ -59,10 +62,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BayAreaWebPro\\PackageName\\PackageNameServiceProvider"
+                "BayAreaWebPro\\Soulmate\\SoulmateServiceProvider"
             ],
             "aliases": {
-                "PackageName": "BayAreaWebPro\\PackageName\\PackageName"
+                "Soulmate": "BayAreaWebPro\\Soulmate\\Soulmate"
             }
         }
     }
