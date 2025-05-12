@@ -6,7 +6,7 @@
     bootstrap="vendor/autoload.php"
     displayDetailsOnTestsThatTriggerWarnings="true"
     backupStaticProperties="false"
-    processIsolation="true"
+    processIsolation="false"
     backupGlobals="false"
     stopOnFailure="true"
     colors="true">

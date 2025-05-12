@@ -2,7 +2,7 @@
 
 namespace BayAreaWebPro\Soulmate\Exceptions;
 
-class MissingContext extends \InvalidArgumentException
+class MissingMethodContext extends \InvalidArgumentException
 {
     protected $message = 'Tool method missing context.';
 }

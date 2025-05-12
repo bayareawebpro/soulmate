@@ -4,5 +4,5 @@ namespace BayAreaWebPro\Soulmate\Exceptions;
 
 class UnexpectedOutput extends \RuntimeException
 {
-    protected $message = 'Unexpected output formatting was encountered.';
+    protected $message = 'Unexpected output was encountered.';
 }

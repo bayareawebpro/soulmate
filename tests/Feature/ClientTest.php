@@ -4,31 +4,30 @@ namespace BayAreaWebPro\Soulmate\Tests\Feature;
 
 use BayAreaWebPro\Soulmate\Chat\Message;
 use BayAreaWebPro\Soulmate\Enums\Role;
-use BayAreaWebPro\Soulmate\Providers\DeepInfraProvider;
+use BayAreaWebPro\Soulmate\Providers\MlStudioProvider;
 use BayAreaWebPro\Soulmate\Soulmate;
 use BayAreaWebPro\Soulmate\Tests\Mocks\ExampleTool;
 use BayAreaWebPro\Soulmate\Tests\TestCase;
 
 class ClientTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
     public function test_example(): void
     {
-        $client = Soulmate::use(new DeepInfraProvider)
-            ->tool(ExampleTool::class, 'default')
+
+        $client = Soulmate::use(new MlStudioProvider)
+            ->tool(ExampleTool::class, 'getCurrentTime')
             ->system(<<<TEXT
             # You are a helpful assistant.
+            /no_think
             TEXT);
 
         $response = $client->chat([
-            new Message(Role::ASSISTANT, 'Hello, what\'s your name?'),
-            new Message(Role::USER, 'Dan'),
+            new Message(Role::USER, 'What time is it?'),
         ]);
 
-        $client->conversation->toCollection()->reverse()->take(3)->reverse()->dump();
+        $response = $client->completion('What time is it? /no_think');
 
-        $client->conversation->toCollection()->where('role', 'tool')->dump();
+        $response->dump();
+
     }
 }

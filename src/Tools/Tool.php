@@ -4,7 +4,7 @@ namespace BayAreaWebPro\Soulmate\Tools;
 
 use BayAreaWebPro\Soulmate\Attributes\MethodContext;
 use BayAreaWebPro\Soulmate\Attributes\ParameterContext;
-use BayAreaWebPro\Soulmate\Exceptions\MissingContext;
+use BayAreaWebPro\Soulmate\Exceptions\MissingMethodContext;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -20,14 +20,14 @@ class Tool implements Arrayable
 
     public function execute(array $arguments): mixed
     {
-        return App::call([$this->class, $this->method], $arguments);
+        return App::call([App::make($this->class), $this->method], $arguments);
     }
 
     public function toArray(): array
     {
         $reflected = new \ReflectionMethod($this->class, $this->method);
         $description = $this->getMethodDescription($reflected);
-        [$required, $properties] = $this->getParameters($reflected);
+        [$required, $properties] = $this->getParameterDescriptions($reflected);
 
         $config = [
             'name'        => $this->method,
@@ -51,14 +51,14 @@ class Tool implements Arrayable
         $context = Arr::first($reflected->getAttributes(MethodContext::class));
 
         if (!$context) {
-            throw new MissingContext("{$reflected->getName()} does not have a context");
+            throw new MissingMethodContext("{$reflected->getName()} does not have a context");
         }
 
         return $context->newInstance()->value;
     }
 
 
-    protected function getParameters(\ReflectionMethod $reflected): array
+    protected function getParameterDescriptions(\ReflectionMethod $reflected): array
     {
         $required = Collection::make();
         $properties = Collection::make();
@@ -70,10 +70,8 @@ class Tool implements Arrayable
             $context = $parameterContexts->firstWhere('name', '=', $param->getName());
 
             if (!$context) {
-                throw new MissingContext("{$reflected->getName()}({$param->getName()}) does not have a context");
+                throw new MissingMethodContext("{$reflected->getName()}({$param->getName()}) does not have a context");
             }
-
-            var_dump($param->getType());
 
             $properties->put($param->getName(), [
                 'type'                 => $param->getType()->getName(),

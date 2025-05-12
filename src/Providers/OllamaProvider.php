@@ -4,7 +4,7 @@ namespace BayAreaWebPro\Soulmate\Providers;
 
 class OllamaProvider implements Provider
 {
-    const string BASE_URL = 'http://localhost:11434/v1';
+    const string BASE_URL = 'http://127.0.0.1:11434/v1';
     const string MODEL = 'llama3.1:latest';
 
     const array OPTIONS = [

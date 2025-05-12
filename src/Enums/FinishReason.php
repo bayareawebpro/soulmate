@@ -8,4 +8,5 @@ enum FinishReason: string
     case CONTENT_FILTER = 'content_filter';
     case LENGTH = 'length';
     case STOP = 'stop';
+    case ERROR = 'error';
 }

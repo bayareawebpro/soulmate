@@ -13,12 +13,16 @@ class ExampleTool
         //
     }
 
-    #[MethodContext('This function will end the conversation')]
-    #[ParameterContext('reason', 'Example: User input included profanity.')]
-    public function default(string $reason): string
+    #[MethodContext('This function will get the current time')]
+    public function getCurrentTime(): string
     {
-        $this->chatSession->endConversation();
+        return now()->timezone('America/Los_Angeles')->toString();
+    }
 
-        return 'Conversation Ended';
+    #[MethodContext('This function will save the name')]
+    #[ParameterContext('name', 'The name')]
+    public function saveName(string $name): string
+    {
+        return "User Name: $name";
     }
 }

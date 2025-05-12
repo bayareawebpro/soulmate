@@ -26,7 +26,7 @@ class SoulmateServiceProvider extends ServiceProvider
             ], 'config');
         }
 
-        $this->app->bind(Providers\Provider::class, OllamaProvider::class);
+        //$this->app->bind(Providers\Provider::class, OllamaProvider::class);
         $this->app->bind(SoulmateService::class, SoulmateService::class);
     }
 

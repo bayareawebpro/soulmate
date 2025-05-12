@@ -2,14 +2,14 @@
 
 namespace BayAreaWebPro\Soulmate\Chat;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Session\Store;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 
 class Conversation implements Arrayable
 {
-    public function __construct(protected Store $session)
+    public function __construct(protected Session $session)
     {
         //
     }

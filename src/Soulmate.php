@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @mixin SoulmateService
+ * @method static SoulmateService use(\BayAreaWebPro\Soulmate\Providers\Provider $provider)
  */
 class Soulmate extends Facade
 {
