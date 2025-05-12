@@ -4,6 +4,7 @@ namespace BayAreaWebPro\Soulmate\Tools;
 
 use BayAreaWebPro\Soulmate\Attributes\MethodContext;
 use BayAreaWebPro\Soulmate\Attributes\ParameterContext;
+use BayAreaWebPro\Soulmate\Exceptions\InvalidParameterType;
 use BayAreaWebPro\Soulmate\Exceptions\MissingMethodContext;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
@@ -28,21 +29,29 @@ class Tool implements Arrayable
         $reflected = new \ReflectionMethod($this->class, $this->method);
         $description = $this->getMethodDescription($reflected);
         [$required, $properties] = $this->getParameterDescriptions($reflected);
-
-        $config = [
-            'name'        => $this->method,
-            'description' => $description,
-        ];
-
-        Arr::set($config, 'parameters', [
-            'type'       => 'object',
-            'properties' => $properties->count() ? $properties->toArray() : new \stdClass,
-        ]);
-        Arr::set($config, 'parameters.required', $required->toArray());
+//
+//        $config = [
+//            'name'        => $this->method,
+//            'description' => $description,
+//        ];
+//
+//        Arr::set($config, 'parameters', [
+//            'type'       => 'object',
+//            'properties' => $properties->count() ? $properties->toArray() : new \stdClass,
+//        ]);
+//        Arr::set($config, 'parameters.required',$required->count() ? $required->toArray() : new \stdClass);
 
         return [
             'type'     => 'function',
-            'function' => $config
+            'function' => [
+                'name'        => $this->method,
+                'description' => $description,
+                'parameters'  => [
+                    'type'       => 'object',
+                    'properties' => $properties->count() ? $properties->toArray() : new \stdClass,
+                    'required'   => $required->count() ? $required->toArray() : new \stdClass,
+                ],
+            ]
         ];
     }
 
@@ -65,16 +74,33 @@ class Tool implements Arrayable
         $parameterContexts = Collection::make($reflected->getAttributes(ParameterContext::class))
             ->map(fn(\ReflectionAttribute $attribute) => $attribute->newInstance());
 
-        foreach ($reflected->getParameters() as $param) {
+        $methodName = $reflected->getName();
 
-            $context = $parameterContexts->firstWhere('name', '=', $param->getName());
+        foreach ($reflected->getParameters() as $param) {
+            $paramName = $param->getName();
+            $paramType = $param->getType();
+            $context    = $parameterContexts->firstWhere('name', '=', $paramName);
 
             if (!$context) {
-                throw new MissingMethodContext("{$reflected->getName()}({$param->getName()}) does not have a context");
+                throw new MissingMethodContext("{$methodName}({$paramName}) does not have a context");
             }
 
-            $properties->put($param->getName(), [
-                'type'                 => $param->getType()->getName(),
+            if(!$paramType instanceof \ReflectionNamedType) {
+                throw new InvalidParameterType("Tool method parameter {$methodName}({$paramName}) must be ReflectionNamedType.");
+            }
+
+            if(!$paramType->isBuiltin()) {
+                throw new InvalidParameterType("Tool method parameter {$methodName}({$paramName}) be built-in type (int, float, double, or string).");
+            }
+
+            $properties->put($paramName, [
+                'type' => match($paramType->getName()){
+                    'int'       => 'int',
+                    'float'     => 'float',
+                    'double'    => 'double',
+                    'string'    => 'string',
+                    default     => throw new InvalidParameterType,
+                },
                 'description'          => $context->value,
                 'additionalProperties' => false,
             ]);

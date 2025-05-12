@@ -4,5 +4,5 @@ namespace BayAreaWebPro\Soulmate\Exceptions;
 
 class InvalidParameterType extends \InvalidArgumentException
 {
-    protected $message = 'Tool method parameter must be built-in type string or numeric.';
+    protected $message = 'Tool method parameter must be built-in type (int, float, double, or string).';
 }

@@ -20,12 +20,9 @@ use Illuminate\Http\Client\Response as ClientResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-/**
- * @method static SoulmateService::use (Provider $provider): SoulmateService
- */
+
 class SoulmateService
 {
     protected int $httpTimeout = 300;
