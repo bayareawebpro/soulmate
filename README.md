@@ -21,6 +21,8 @@ Create your own providers by implementing the `Provider` contract.
 
 namespace App\Soulmate\Providers;
 
+use Illuminate\Container\Attributes\Config;
+
 use BayAreaWebPro\Soulmate\Providers\Provider;
 
 class MlStudioProvider implements Provider
@@ -34,6 +36,15 @@ class MlStudioProvider implements Provider
         'max_new_tokens'  => 120,
         'response_format' => 'none',
     ];
+    
+    public function __construct(
+        #[\SensitiveParameter]
+        #[Config('my.secret')]
+        public string $secret
+    )
+    {
+        //
+    }
 }
 ```
 

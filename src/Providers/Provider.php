@@ -4,7 +4,7 @@ namespace BayAreaWebPro\Soulmate\Providers;
 
 interface Provider
 {
-    const string BASE_URL = '';
-    const string MODEL = '';
-    const array OPTIONS = [];
+    public const string BASE_URL = '';
+    public const string MODEL = '';
+    public const array OPTIONS = [];
 }

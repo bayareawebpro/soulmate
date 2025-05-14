@@ -8,7 +8,7 @@ use BayAreaWebPro\Soulmate\Chat\Conversation;
 
 class ExampleTool
 {
-    public function __construct(protected Conversation $chatSession)
+    public function __construct(protected Conversation $conversation)
     {
         //
     }

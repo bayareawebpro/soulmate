@@ -29,17 +29,6 @@ class Tool implements Arrayable
         $reflected = new \ReflectionMethod($this->class, $this->method);
         $description = $this->getMethodDescription($reflected);
         [$required, $properties] = $this->getParameterDescriptions($reflected);
-//
-//        $config = [
-//            'name'        => $this->method,
-//            'description' => $description,
-//        ];
-//
-//        Arr::set($config, 'parameters', [
-//            'type'       => 'object',
-//            'properties' => $properties->count() ? $properties->toArray() : new \stdClass,
-//        ]);
-//        Arr::set($config, 'parameters.required',$required->count() ? $required->toArray() : new \stdClass);
 
         return [
             'type'     => 'function',
@@ -49,7 +38,7 @@ class Tool implements Arrayable
                 'parameters'  => [
                     'type'       => 'object',
                     'properties' => $properties->count() ? $properties->toArray() : new \stdClass,
-                    'required'   => $required->count() ? $required->toArray() : new \stdClass,
+                    'required'   => $required->toArray(),
                 ],
             ]
         ];

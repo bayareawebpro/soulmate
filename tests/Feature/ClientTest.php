@@ -2,32 +2,28 @@
 
 namespace BayAreaWebPro\Soulmate\Tests\Feature;
 
-use BayAreaWebPro\Soulmate\Chat\Message;
-use BayAreaWebPro\Soulmate\Enums\Role;
 use BayAreaWebPro\Soulmate\Providers\MlStudioProvider;
 use BayAreaWebPro\Soulmate\Soulmate;
-use BayAreaWebPro\Soulmate\Tests\Mocks\ExampleTool;
+use BayAreaWebPro\Soulmate\Tests\Mocks\EmbeddingProvider;
 use BayAreaWebPro\Soulmate\Tests\TestCase;
+use Illuminate\Support\Collection;
 
 class ClientTest extends TestCase
 {
-    public function test_example(): void
+
+    public function test_models(): void
     {
+        $client = Soulmate::use(MlStudioProvider::class);
+        $this->assertInstanceOf(Collection::class, $client->models());
+        $this->assertTrue($client->models()->count() > 0);
+    }
 
-        $client = Soulmate::use(new MlStudioProvider)
-            ->tool(ExampleTool::class, 'getCurrentTime')
-            ->system(<<<TEXT
-            # You are a helpful assistant.
-            /no_think
-            TEXT);
+    public function test_embedding(): void
+    {
+        $embedding = Soulmate::use(EmbeddingProvider::class)
+            ->embedding('This is a test');
 
-        $response = $client->chat([
-            new Message(Role::USER, 'What time is it?'),
-        ]);
-
-        $response = $client->completion('What time is it? /no_think');
-
-        $response->dump();
-
+        $this->assertInstanceOf(Collection::class, $embedding);
+        $this->assertTrue($embedding->count() > 0);
     }
 }
