@@ -2,7 +2,7 @@
 
 namespace BayAreaWebPro\Soulmate\Tests\Feature;
 
-use BayAreaWebPro\Soulmate\Chat\Message;
+use BayAreaWebPro\Soulmate\ChatCompletion\Message;
 use BayAreaWebPro\Soulmate\Enums\Role;
 use BayAreaWebPro\Soulmate\Providers\MlStudioProvider;
 use BayAreaWebPro\Soulmate\Soulmate;

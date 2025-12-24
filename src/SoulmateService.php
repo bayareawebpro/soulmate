@@ -2,9 +2,9 @@
 
 namespace BayAreaWebPro\Soulmate;
 
-use BayAreaWebPro\Soulmate\Chat\Conversation;
-use BayAreaWebPro\Soulmate\Chat\Message;
-use BayAreaWebPro\Soulmate\Chat\Response;
+use BayAreaWebPro\Soulmate\ChatCompletion\Conversation;
+use BayAreaWebPro\Soulmate\ChatCompletion\Message;
+use BayAreaWebPro\Soulmate\ChatCompletion\Response;
 use BayAreaWebPro\Soulmate\Enums\Endpoint;
 use BayAreaWebPro\Soulmate\Enums\FinishReason;
 use BayAreaWebPro\Soulmate\Enums\Role;
@@ -20,6 +20,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Fluent;
 use Illuminate\Support\Str;
 
 

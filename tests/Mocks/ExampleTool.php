@@ -4,7 +4,7 @@ namespace BayAreaWebPro\Soulmate\Tests\Mocks;
 
 use BayAreaWebPro\Soulmate\Attributes\MethodContext;
 use BayAreaWebPro\Soulmate\Attributes\ParameterContext;
-use BayAreaWebPro\Soulmate\Chat\Conversation;
+use BayAreaWebPro\Soulmate\ChatCompletion\Conversation;
 
 class ExampleTool
 {
